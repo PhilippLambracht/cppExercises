@@ -4,7 +4,7 @@
 #include <random>
 #include <locale>
 #include <string.h>
-
+#include <pthread.h>
 #include "timing/timing.h"
 #include "productsum/productsum.h"
 
@@ -120,7 +120,7 @@ void parseArguments ( int argc, char* argv[] )
     }else{
       nelements=100;
     }
-    
+
     /*
     for(int i=1; i<argc;i++){
       if(strncmp(argv[i],"-n" == 0){
@@ -128,14 +128,14 @@ void parseArguments ( int argc, char* argv[] )
       }
     }
     */
-    std::logic_error("Not implemented yet.");
+    //std::logic_error("Not implemented yet.");
 }
 
 double sequentialProductSum ( std::vector<int> &_vector )
 {
     // TODO(2): Sequentiel calculation of the sum of products.
     // Add your implementation here!
-
+      return ProductSum::calcProductSum(_vector, 0 ,_vector.size()-1);
     std::logic_error("Not implemented yet.");
     return -1;
 }
@@ -143,15 +143,30 @@ double sequentialProductSum ( std::vector<int> &_vector )
 void *parallelProductSumWorker ( void *_arg )
 {
     // Related to TODO(3): Worker function for threaded calculation of the sum of products.
+    int startIndex;
+    int endIndex;
+    std::vector<int> *wholeVector;
+    std::vector<int> actualVector;
+    struct VectorRange *vrData;
+    vrData = (struct VectorRange *) _arg;
+    startIndex=vrData->startIdx;
+    endIndex=vrData->endIdx;
+    wholeVector = vrData -> vector;
+    for(int i = startIndex; i<endIndex; i++){
+      actualVector.push_back(wholeVector[i]);
+    }
+    return (void *) parallelProductSum(&actualVector, nelements / nthreads):
 
-    std::logic_error("Not implemented yet.");
+
+    //std::logic_error("Not implemented yet.");
     return 0;
 }
 
 double parallelProductSum ( std::vector<int> &_vector, int _nthreads )
 {
     // TODO(3): Parallel calculation of the sum of products.
-    // Add your implementation here!
+
+    return ProductSum::calcProductSum(_vector, 0 ,_vector.size()-1);
 
     std::logic_error("Not implemented yet.");
     return -1;
@@ -161,7 +176,7 @@ int main ( int argc, char* argv[] )
 {
     // Set locale, so that a point is used as thousand separator.
     setlocale ( LC_ALL, "" );
-
+    void* ret
     // Parse command line parameters.
     parseArguments ( argc, argv );
 
@@ -176,7 +191,7 @@ int main ( int argc, char* argv[] )
     {
         vector[i] = rand() % 5 + 1;
     }
-
+    pthread_t threads[nthreads];
     fprintf ( stderr, "Starts calculations with an vector of size %d and %d threads.\n", nelements, nthreads );
 
     // Start calculations.
@@ -187,17 +202,43 @@ int main ( int argc, char* argv[] )
     {
         // TODO(4): Time measurement of the sequential calculation of the product sum. Use your implemented function
         // sequentialProductSum() and store the measured calculation time in sequentialCalculationTime and the
-        // product sum in sequentiatProductSumResult.
-
-        std::logic_error("Not implemented yet.");
+        // product sum in sequentiatProduct startTimestamp = Timing::getTime();
+        startTimestamp = Timing::getTime();
+        sequentialProductSumResult = sequentialProductSum(&vector);
+        endTimestamp = Timing::getTime();
+        sequentialCalculationTime = Timing::getTimeDifference(startTimestamp, endTimestamp);
+        //std::logic_error("Not implemented yet.");
     }
 
     {
         // TODO(5): Time measurement of the parallel calculation of the product sum. Use your implemented function
         // parallelProductSum() and store the measured calculation time in parallelCalculationTime and the
         // product sum in parallelProductSumResult.
+        int strIndex = 0;
+        int endIndex = nelements / nthreads;
+        startTimestamp = Timing::getTime();
+        for(unsigned long i = 0; i < nthreads; i++){
+          struct VectorRange vr;
+          vr.startIdx = strIndex;
+          vr.endIdx = endIndex;
+          vr.vector =&vector;
+          pthread_create(&threads[i],0, parallelProductSumWorker, (void *) &vr);
+          vr.startIdx = vr.endIdx;
+          vr.endIdx = vr.endIdx + (nelements / nthreads);
+        }
+        parallelProductSumResult =1;
+        for(unsigned long i = 0; i < nthreads; i++){
+          pthread_join (threads[i],&ret);
+          parallelProductSumResult *= (double)ret;
+        }
 
-        std::logic_error("Not implemented yet.");
+
+        endTimestamp = Timing::getTime();
+        parallelCalculationTime = Timing::getTimeDifference(startTimestamp, endTimestamp);
+
+
+
+        //std::logic_error("Not implemented yet.");
     }
 
     // Output.
