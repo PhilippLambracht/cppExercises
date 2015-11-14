@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../libtiming-lib.a  CMakeFiles/timing-lib.dir/timing.cpp.o
+/usr/bin/ranlib ../libtiming-lib.a

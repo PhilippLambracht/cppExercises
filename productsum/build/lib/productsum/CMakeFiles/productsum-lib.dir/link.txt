@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../libproductsum-lib.a  CMakeFiles/productsum-lib.dir/productsum.cpp.o
+/usr/bin/ranlib ../libproductsum-lib.a

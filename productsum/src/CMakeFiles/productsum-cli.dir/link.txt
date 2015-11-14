@@ -1,0 +1,1 @@
+/usr/bin/c++   -pipe -DDEBUG -ggdb -DLINUX  -fmessage-length=0 -Wall -std=c++11 -Wextra -rdynamic -g    CMakeFiles/productsum-cli.dir/cli.cpp.o  -o ../bin/productsum-cli -rdynamic -lpthread ../lib/libproductsum-lib.a ../lib/libtiming-lib.a 

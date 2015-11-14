@@ -1,0 +1,2 @@
+/home/god/Studium/gdb25_16/builds/productsum/build/ext/gtest/src/googletest-build/CMakeFiles/gtest.dir
+/home/god/Studium/gdb25_16/builds/productsum/build/ext/gtest/src/googletest-build/CMakeFiles/gtest_main.dir

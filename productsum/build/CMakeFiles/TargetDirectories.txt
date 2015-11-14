@@ -1,0 +1,5 @@
+/home/god/Studium/gdb25_16/builds/productsum/build/ext/gtest/CMakeFiles/googletest.dir
+/home/god/Studium/gdb25_16/builds/productsum/build/src/CMakeFiles/productsum-cli.dir
+/home/god/Studium/gdb25_16/builds/productsum/build/lib/productsum/CMakeFiles/productsum-lib.dir
+/home/god/Studium/gdb25_16/builds/productsum/build/test/CMakeFiles/productsum-test.dir
+/home/god/Studium/gdb25_16/builds/productsum/build/lib/timing/CMakeFiles/timing-lib.dir

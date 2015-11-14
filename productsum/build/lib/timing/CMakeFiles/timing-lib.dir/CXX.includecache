@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/god/Studium/gdb25_16/builds/productsum/lib/timing/timing.cpp
+timing.h
+/home/god/Studium/gdb25_16/builds/productsum/lib/timing/timing.h
+time.h
+-
+stdexcept
+-
+
+/home/god/Studium/gdb25_16/builds/productsum/lib/timing/timing.h
+

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/god/Studium/gdb25_16/allgroups/allgroups/assignments/productsum/lib/productsum/productsum.cpp
+productsum.h
+/home/god/Studium/gdb25_16/allgroups/allgroups/assignments/productsum/lib/productsum/productsum.h
+stdexcept
+-
+
+/home/god/Studium/gdb25_16/allgroups/allgroups/assignments/productsum/lib/productsum/productsum.h
+vector
+-
+
